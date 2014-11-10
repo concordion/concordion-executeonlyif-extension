@@ -1,0 +1,38 @@
+<html xmlns:c="http://www.concordion.org/2007/concordion" xmlns:ext="urn:concordion-extensions:2010">
+<link href="../../concordion.css" rel="stylesheet" type="text/css" />
+<body>
+
+<h1>The Ultimate Question</h1>
+
+<p>What do you get if you <a href="http://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Answer_to_the_Ultimate_Question_of_Life.2C_the_Universe.2C_and_Everything_.2842.29">multiply six by nine</a>?</p> 
+
+<div class="example">
+	<h4>Example 1: Success</h4>
+	
+	<p>When the execute flag is set to "<span c:execute="setShouldExecute(#TEXT)">true</span>" the test should run and be colored green.</p>
+	
+	<span ext:embed="getNotExecuteReason()"></span>
+	<div ext:executeOnlyIf="shouldExecute()">
+		<p>When I multiply "6 * 7" the answer should be "<span c:assertEquals="getCalculatorResult()">42</span>".</p>
+	</div>
+	
+	<h4>Example 2: Ignored</h4>
+	<p>When the execute flag is set to "<span c:execute="setShouldExecute(#TEXT)">false</span>" the following should be ignored and colored grey.</p>
+	<p>Note the use of Embed extension to show why we're not executing part of the specification.</p>
+
+	<span ext:embed="getNotExecuteReason()"></span>
+	<div ext:executeOnlyIf="shouldExecute()">
+		<p>When I multiply "6 * 7" the answer should be "<span c:assertEquals="getCalculatorResult()">42</span>".</p>
+	</div>
+	
+	<h4>Example 3: Run A Specification That Has An Ignored Test</h4>
+	<p>Running a specification that has a ignored test means the run command is also colored grey.</p>
+	
+	<div>
+		<a c:run="concordion" href="ExecuteOnlyIfEmbedded.html">This should be grey</a>
+	</div>
+	
+</div>
+
+</body>
+</html>
