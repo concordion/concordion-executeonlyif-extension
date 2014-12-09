@@ -1,7 +1,14 @@
-concordion-executeonlyif-extension
-==================================
+[![Build Status](https://travis-ci.org/concordion/concordion-executeonlyif-extension.svg?branch=master)](https://travis-ci.org/concordion/concordion-executeonlyif-extension)
+
+This [Concordion](http://www.concordion.org) extension provides the capability to embed screenshots in the output specification.
+
+The [demo project](http://github.com/concordion/concordion-executeonlyif-extension-demo) demonstrates this extension.
+
+# Introduction
 
 Determines whether child test should be executed or not.  Useful if parts of a specification cannot be executed in all environments a test suite may run against.
+
+# Usage
 
 Requires:
 
@@ -43,3 +50,8 @@ Requires:
 		return msg;
 	}
 ```
+
+# Further info
+
+* [API](http://concordion.github.io/concordion-executeonlyif-extension/api/index.html)
+* [Demo project](http://github.com/concordion/concordion-executeonlyif-extension-demo)
