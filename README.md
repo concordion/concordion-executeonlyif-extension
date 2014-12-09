@@ -14,7 +14,7 @@ Requires:
 
 1. xmlns:ext="urn:concordion-extensions:2010" added to the html so concordion can call the extension from the specification
   ```html
-  <code><html xmlns:c="http://www.concordion.org/2007/concordion" xmlns:ext="urn:concordion-extensions:2010"></code>
+  <html xmlns:c="http://www.concordion.org/2007/concordion" xmlns:ext="urn:concordion-extensions:2010">
   ```
   
 2. Place any concordion commands that you wish to conditionally execute as children of the executeOnlyIf command
