@@ -13,33 +13,30 @@ Determines whether child test should be executed or not.  Useful if parts of a s
 Requires:
 
 1. xmlns:ext="urn:concordion-extensions:2010" added to the html so concordion can call the extension from the specification
-
-```html
+  ```html
   <code><html xmlns:c="http://www.concordion.org/2007/concordion" xmlns:ext="urn:concordion-extensions:2010"></code>
-```
-
+  ```
+  
 2. Place any concordion commands that you wish to conditionally execute as children of the executeOnlyIf command
-
-  // Specification
-```html
+  * Specification 
+  ```html
 	<div ext:executeOnlyIf="shouldNotExecute()">
 		<p>When I google "<span c:execute="searchFor(#TEXT)">6 * 9</span>" the answer should be "<span c:assertEquals="getCalculatorResult()">42</span>".</p>
 	</div>
-```
-```java
+  ```
+  * Fixture
+  ```java
 	public boolean shouldNotExecute() {
 		return false;
 	}
-```
-
-3. Optionally you can use the Embed extension to give a reason you haven't excuted part of the spec
-
-  // Specification
-```html
+  ```
+3. Optionally you can use the Embed extension to give a reason you haven't executed part of the spec
+  * Specification
+   ```html
   <span ext:embed="getNotExecuteReason()"></span>
-```
-// Fixture
-```code
+   ```
+  * Fixture
+   ```code
   public String getNotExecuteReason() {
 		String msg = "";
 
@@ -49,7 +46,7 @@ Requires:
 
 		return msg;
 	}
-```
+   ```
 
 # Further info
 
