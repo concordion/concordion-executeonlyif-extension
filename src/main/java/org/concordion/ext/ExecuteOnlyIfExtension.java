@@ -6,7 +6,7 @@ import org.concordion.api.extension.ConcordionExtension;
 import org.concordion.ext.executeOnlyIf.ExecuteOnlyIfCommand;
 
 /**
- * Determines whether child test should be executed or not.
+ * Conditionally executes child tests based on the result (true or false) from execution of executeOnlyIf command.
  */
 public class ExecuteOnlyIfExtension implements ConcordionExtension {
 
