@@ -27,35 +27,28 @@ public class ExecuteOnlyIfCommand extends AbstractCommand {
 
 	@Override
 	public void verify(final CommandCall commandCall, final Evaluator evaluator, final ResultRecorder resultRecorder) {
-
 		Element element = commandCall.getElement();
 		String expression = commandCall.getExpression();
 		Object result = evaluator.evaluate(expression);
+		
 		if (result != null && result instanceof Boolean) {
+			CommandCallList childCommands = commandCall.getChildren();
+
 			if ((Boolean) result) {
-				CommandCallList childCommands = commandCall.getChildren();
+				// Execute all child commands and leaving displaying and reporting results up to them
 				childCommands.setUp(evaluator, resultRecorder);
 				childCommands.execute(evaluator, resultRecorder);
 				childCommands.verify(evaluator, resultRecorder);
-
-				announceSuccess(element);
-				element.addStyleClass("success");
-				resultRecorder.record(Result.SUCCESS);
 			} else {
-				announceSuccess(element);
+				// Mark each child command as ignored and report as an ignored test
+				for (int i = 0; i < childCommands.size(); i++) {
+					//childCommands.get(0).getElement().addStyleClass("ignored");
+					resultRecorder.record(Result.IGNORED);
+				}
 				element.addStyleClass("ignored");
-				resultRecorder.record(Result.IGNORED);
 			}
 		} else {
 			throw new InvalidExpressionException("Expression '" + expression + "' did not produce a boolean result.");
 		}
-	}
-
-	protected void announceSuccess(final Element element) {
-		listeners.announce().successReported(new AssertSuccessEvent(element));
-	}
-
-	protected void announceFailure(final Element element, final String expected, final Object actual) {
-		listeners.announce().failureReported(new AssertFailureEvent(element, expected, actual));
 	}
 }

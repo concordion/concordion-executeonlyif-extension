@@ -1,0 +1,30 @@
+<html xmlns:c="http://www.concordion.org/2007/concordion" xmlns:ext="urn:concordion-extensions:2010">
+<body>
+
+<h1>Optionally Exclude Tests</h1>
+
+<p>
+	There are times that parts of a specification cannot be run and it is useful to skip these tests and mark them as "ignored" in the specification.
+	Typically this will result in the element being displayed in grey (depending on the CSS stylesheet). 
+</p> 
+
+<div class="example">
+	<h3>Example 1: Execute</h3>
+	<i>The following should be coloured green for the first test and red for the second test</i>
+	
+	<div ext:executeOnlyIf="shouldExecute()">
+		<p>This should be <span c:assertTrue="shouldExecute()">successful</span></p>
+		<p>This should <span c:assertTrue="shouldNotExecute()">fail</span></p>
+	</div>
+	
+	<h3>Example 2: Do Not Execute</h3>
+	<i>The following two tests should ignored (ie not executed) and coloured grey</i>
+	
+	<div ext:executeOnlyIf="shouldNotExecute()">
+		<p>This should be <span c:assertTrue="shouldExecute()">successful</span></p>
+		<p>This should <span c:assertTrue="shouldNotExecute()">fail</span></p>
+	</div>	
+</div>
+
+</body>
+</html>
