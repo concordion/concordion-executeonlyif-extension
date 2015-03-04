@@ -21,3 +21,9 @@ githubPages {
 		}
 	}
 }
+
+sourceSets {
+	main {
+		resources { srcDir 'src/test/java' }
+	}
+}
