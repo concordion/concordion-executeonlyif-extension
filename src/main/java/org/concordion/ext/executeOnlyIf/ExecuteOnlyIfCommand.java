@@ -42,12 +42,9 @@ public class ExecuteOnlyIfCommand extends AbstractCommand {
 			} else {
 				// Mark each child command as ignored and report as an ignored test
 				for (int i = 0; i < childCommands.size(); i++) {
-					//childCommands.get(i).getElement().addStyleClass("ignored");
-					//childCommands.get(i).getElement().addAttribute("style", "background-color: lightgrey");
 					resultRecorder.record(Result.IGNORED);
 				}
-				//element.addStyleClass("ignored");
-				element.addAttribute("style", "background-color: lightgrey");
+				element.addStyleClass("ignored");
 			}
 		} else {
 			throw new InvalidExpressionException("Expression '" + expression + "' did not produce a boolean result.");
