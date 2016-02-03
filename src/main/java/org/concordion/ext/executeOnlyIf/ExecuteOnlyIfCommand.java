@@ -16,7 +16,7 @@ import org.concordion.internal.InvalidExpressionException;
 
 public class ExecuteOnlyIfCommand extends AbstractCommand {
 
-	private final List<AssertListener> listeners = Collections.synchronizedList(new ArrayList<AssertListener>());
+	private final List<AssertListener> listeners = new ArrayList<AssertListener>();
 
 	public void addAssertListener(final AssertListener listener) {
 		listeners.add(listener);
