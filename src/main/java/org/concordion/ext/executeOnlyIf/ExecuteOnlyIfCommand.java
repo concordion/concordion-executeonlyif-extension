@@ -1,5 +1,9 @@
 package org.concordion.ext.executeOnlyIf;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.concordion.api.AbstractCommand;
 import org.concordion.api.CommandCall;
 import org.concordion.api.CommandCallList;
@@ -7,22 +11,19 @@ import org.concordion.api.Element;
 import org.concordion.api.Evaluator;
 import org.concordion.api.Result;
 import org.concordion.api.ResultRecorder;
-import org.concordion.api.listener.AssertFailureEvent;
 import org.concordion.api.listener.AssertListener;
-import org.concordion.api.listener.AssertSuccessEvent;
 import org.concordion.internal.InvalidExpressionException;
-import org.concordion.internal.util.Announcer;
 
 public class ExecuteOnlyIfCommand extends AbstractCommand {
 
-	private final Announcer<AssertListener> listeners = Announcer.to(AssertListener.class);
+	private final List<AssertListener> listeners = new ArrayList<AssertListener>();
 
 	public void addAssertListener(final AssertListener listener) {
-		listeners.addListener(listener);
+		listeners.add(listener);
 	}
 
 	public void removeAssertListener(final AssertListener listener) {
-		listeners.removeListener(listener);
+		listeners.remove(listener);
 	}
 
 	@Override
