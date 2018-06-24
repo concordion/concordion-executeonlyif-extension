@@ -13,9 +13,10 @@ ext {
 	inceptionYear = '2014'
 }
 
-githubPages {
+gitPublish {
 	repoUri = 'git@github.com:concordion/concordion-executeonlyif-extension.git'
-	pages {
+	branch = 'gh-pages'
+	contents {
 		from ('build/docs/javadoc/') {
 			into 'api'
 		}
