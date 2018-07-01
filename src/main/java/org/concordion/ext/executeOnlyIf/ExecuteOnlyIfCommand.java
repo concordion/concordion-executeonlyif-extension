@@ -1,12 +1,6 @@
 package org.concordion.ext.executeOnlyIf;
 
-import org.concordion.api.AbstractCommand;
-import org.concordion.api.CommandCall;
-import org.concordion.api.CommandCallList;
-import org.concordion.api.Element;
-import org.concordion.api.Evaluator;
-import org.concordion.api.Result;
-import org.concordion.api.ResultRecorder;
+import org.concordion.api.*;
 import org.concordion.api.listener.AssertFailureEvent;
 import org.concordion.api.listener.AssertListener;
 import org.concordion.api.listener.AssertSuccessEvent;
@@ -26,19 +20,19 @@ public class ExecuteOnlyIfCommand extends AbstractCommand {
 	}
 
 	@Override
-	public void verify(final CommandCall commandCall, final Evaluator evaluator, final ResultRecorder resultRecorder) {
+	public void verify(CommandCall commandCall, Evaluator evaluator, ResultRecorder resultRecorder, Fixture fixture) {
 		Element element = commandCall.getElement();
 		String expression = commandCall.getExpression();
 		Object result = evaluator.evaluate(expression);
-		
+
 		if (result != null && result instanceof Boolean) {
 			CommandCallList childCommands = commandCall.getChildren();
 
 			if ((Boolean) result) {
 				// Execute all child commands and leaving displaying and reporting results up to them
-				childCommands.setUp(evaluator, resultRecorder);
-				childCommands.execute(evaluator, resultRecorder);
-				childCommands.verify(evaluator, resultRecorder);
+				childCommands.setUp(evaluator, resultRecorder, fixture);
+				childCommands.execute(evaluator, resultRecorder, fixture);
+				childCommands.verify(evaluator, resultRecorder, fixture);
 			} else {
 				// Mark each child command as ignored and report as an ignored test
 				for (int i = 0; i < childCommands.size(); i++) {
