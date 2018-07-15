@@ -48,6 +48,15 @@ Requires:
 	}
    ```
 
+# Dependencies 
+
+Note that this extension is impacted by breaking API changes in Concordion 2.2.0. You will need to ensure the correct version is in use:
+
+| `concordion` version | `concordion-executeonlyif-extension` version |
+| ------------------ | ---------------------- |
+| <  2.2.0           | <= 0.2.1               |
+| >= 2.2.0           | >= 0.3.0               |
+
 # Further info
 
 * [API](http://concordion.github.io/concordion-executeonlyif-extension/api/index.html)
