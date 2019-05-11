@@ -29,10 +29,7 @@ public class ExecuteOnlyIfCommand extends AbstractCommand {
 			CommandCallList childCommands = commandCall.getChildren();
 
 			if ((Boolean) result) {
-				// Execute all child commands and leaving displaying and reporting results up to them
-				childCommands.setUp(evaluator, resultRecorder, fixture);
-				childCommands.execute(evaluator, resultRecorder, fixture);
-				childCommands.verify(evaluator, resultRecorder, fixture);
+				childCommands.processSequentially(evaluator, resultRecorder, fixture);
 			} else {
 				// Mark each child command as ignored and report as an ignored test
 				for (int i = 0; i < childCommands.size(); i++) {
