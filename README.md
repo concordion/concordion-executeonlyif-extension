@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/concordion/concordion-executeonlyif-extension.svg?branch=master)](https://travis-ci.com/concordion/concordion-executeonlyif-extension)
+[![Build and Test](https://github.com/concordion/concordion-executeonlyif-extension/actions/workflows/ci.yml/badge.svg)](https://github.com/concordion/concordion-executeonlyif-extension/actions/workflows/ci.yml)
 
 This [Concordion](http://www.concordion.org) extension provides the capability to conditionally execute child tests.
 
